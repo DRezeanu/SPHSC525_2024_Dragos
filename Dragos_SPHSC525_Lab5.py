@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 def makeGrating(size, sf, ori, phase, contrast):
     x, y = np.meshgrid(np.linspace(0, size, size), np.linspace(0,size,size))
@@ -11,3 +12,8 @@ def makeGrating(size, sf, ori, phase, contrast):
     grating *= contrast
 
     return grating
+
+test_grating = makeGrating(500, 100, 45, 180, 0.5)
+
+plt.imshow(test_grating, cmap="Grays")
+plt.show()
