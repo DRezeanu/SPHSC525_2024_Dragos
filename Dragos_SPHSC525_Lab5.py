@@ -11,4 +11,3 @@ def makeGrating(size, sf, ori, phase, contrast):
     grating *= contrast
 
     return grating
-
