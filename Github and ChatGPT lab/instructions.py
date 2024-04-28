@@ -30,17 +30,3 @@
         #X-axis should have 0 marked as onset of error.
 
     #Plot of average ERP from Cz for ALL participants, average of sentences without errors and average of sentences with errors. 
-
-
-# TO DO
-
-# Read in data from DAP, CNT, RS3, CEO file types?
-# What is the Cz electrode? How do you find/isolate the Cz electrode?
-# How is EEG data organized?
-# Look up Event-Related Potentials for EEG data
-# Figure out the nature of the stimulus... how many categories? Gradation or Right vs Wrong?
-# Associate data with stimulus?
-# Calculate average
-# Looking at N400 component (elicited by a "semantic violation" at time 0)
-# Looking at onset latency, latency, amplitude, and scalp distribution
-# Compared N400 elicited by violation, in native australian english and mandarin-accented english
