@@ -22,6 +22,7 @@ def plot_epoch(filepath, electrode_of_interest, event_of_interest, tmin, tmax):
     e1.apply_baseline((-0.2,0), verbose = False)
     e1.plot_image(picks=electrode_of_interest)
 
+    del raw_data
 
 
 def plot_events(filepath):
@@ -29,6 +30,8 @@ def plot_events(filepath):
     events = mne.events_from_annotations(raw_data, verbose=False)
     
     figure = mne.viz.plot_events(events=events[0], event_id=events[1], sfreq=raw_data.info["sfreq"])
+    
+    del raw_data
 
 
 def plot_raw_eeg(filepath, electrode_of_interest = "data", time_window = 10):
@@ -36,6 +39,8 @@ def plot_raw_eeg(filepath, electrode_of_interest = "data", time_window = 10):
     raw_data.plot(picks=electrode_of_interest, scalings = "auto", duration = time_window,
                   lowpass=35)
     plt.show()
+
+    del raw_data
 
 
 def get_erp(filepath, event_of_interest, electrode_of_interest, tmin, tmax):
@@ -77,6 +82,8 @@ def get_erp(filepath, event_of_interest, electrode_of_interest, tmin, tmax):
 
     erp_average = np.mean(epochs, axis=0)
     erp_sem = sem(epochs, axis=0)
+
+    del raw_data
     
     return epochs, erp_average, erp_sem
 
@@ -141,6 +148,8 @@ def plot_erp(filepath, event_of_interest, electrode_of_interest, tmin, tmax):
     plt.ylim([-10, 10])
     plt.show()
 
+    del raw_data
+
 
 def get_audio_length(filepath, event_start, event_stop, sampling_frequency = 1000):
     raw_data = mne.io.read_raw_curry(filepath, preload=False, verbose=False)
@@ -167,6 +176,8 @@ def get_audio_length(filepath, event_start, event_stop, sampling_frequency = 100
     sd_diff /= 1000
     mean_diff /= sampling_frequency
 
+    del raw_data
+
     return mean_diff, sd_diff
 
 # Datafile locations by subject
@@ -177,7 +188,7 @@ s4 = "Data/SS04/SS04-KT-04082016.dat"
 s5 = "Data/SS05/SS05-BJ-05082016.dat"
 
 # Pick subject to plot
-subject = s5
+subject = s4
 
 # Set tmin, tmax, and sampling frequency
 tmin = -0.5
@@ -200,7 +211,6 @@ mistake_plus_sem = mistake_mean+mistake_sem
 num_samples = int((tmax-tmin)*sampling_frequency)
 xvals = np.linspace(tmin, tmax, num_samples)
 
-
 # Plot and save individual results
 plt.figure(figsize=(8,5))
 
@@ -216,7 +226,7 @@ plt.xlabel("Time (s)")
 plt.ylabel('Voltage ($\\mu$V)')
 plt.title(f"Subject {subject[8]} Results")
 plt.xlim([-0.5, 1.0])
-plt.savefig(f"Results/Subject_{subject[8]}_Results.png")
+plt.savefig(f"SPHSC525_2024_Dragos/Results/Subject_{subject[8]}_Results.png")
 plt.show()
 
 
@@ -281,5 +291,5 @@ plt.xlabel("Time (s)")
 plt.ylabel('Voltage ($\\mu$V)')
 plt.title(f"Population Results")
 plt.xlim([-0.5, 1.0])
-plt.savefig(f"Results/Population_Results.png")
+plt.savefig(f"SPHSC525_2024_Dragos/Results/Population_Results.png")
 plt.show()
