@@ -24,8 +24,6 @@ def plot_epoch(filepath, electrode_of_interest, event_of_interest, tmin, tmax):
 
     del raw_data
 
-
-
 def plot_events(filepath):
     raw_data = mne.io.read_raw_curry(filepath, preload=False, verbose = False)
     events = mne.events_from_annotations(raw_data, verbose=False)
@@ -34,8 +32,6 @@ def plot_events(filepath):
     
     del raw_data
 
-
-
 def plot_raw_eeg(filepath, electrode_of_interest = "data", time_window = 10):
     raw_data = mne.io.read_raw_curry(filepath, preload=False, verbose=False)
     raw_data.plot(picks=electrode_of_interest, scalings = "auto", duration = time_window,
@@ -43,8 +39,6 @@ def plot_raw_eeg(filepath, electrode_of_interest = "data", time_window = 10):
     plt.show()
 
     del raw_data
-
-
 
 def get_erp(filepath, event_of_interest, electrode_of_interest, tmin, tmax):
     # Import and preprocess data (35Hz low-pass filter)
@@ -89,8 +83,6 @@ def get_erp(filepath, event_of_interest, electrode_of_interest, tmin, tmax):
     del raw_data
     
     return epochs, erp_average, erp_sem
-
-
 
 def plot_erp(filepath, event_of_interest, electrode_of_interest, tmin, tmax):
     # Import and preprocess data (35Hz low-pass filter)
@@ -153,8 +145,6 @@ def plot_erp(filepath, event_of_interest, electrode_of_interest, tmin, tmax):
     plt.show()
 
     del raw_data
-
-
 
 def get_audio_length(filepath, event_start, event_stop, sampling_frequency = 1000):
     raw_data = mne.io.read_raw_curry(filepath, preload=False, verbose=False)
@@ -238,13 +228,6 @@ def main() -> None:
     plt.savefig(f"SPHSC525_2024_Dragos/Results/Subject_{subject[8]}_Results.png")
     plt.show()
 
-
-    # Data filename by subject
-    s1 = "Data/SS01/SS01-SR-02082016.dat"
-    s2 = "Data/SS02/SS02-LV-03082016.dat"
-    s3 = "Data/SS03/SS03-MO-03082016.dat"
-    s4 = "Data/SS04/SS04-KT-04082016.dat"
-    s5 = "Data/SS05/SS05-BJ-05082016.dat"
 
     # Pull all epochs for all subjects
     s1_congruent_epochs, _, _ = get_erp(s1, "203", "Cz", -0.5, 1.0)
