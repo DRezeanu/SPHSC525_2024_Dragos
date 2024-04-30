@@ -210,7 +210,7 @@ def main() -> None:
     num_samples = int((tmax-tmin)*sampling_frequency)
     xvals = np.linspace(tmin, tmax, num_samples)
 
-    
+
     # Plot and save individual results
     plt.figure(figsize=(8,5))
 
@@ -287,6 +287,7 @@ def main() -> None:
     plt.xlim([-0.5, 1.0])
     plt.savefig(f"SPHSC525_2024_Dragos/Results/Population_Results.png")
     plt.show()
+
 
 
 if __name__ == "__main__":
